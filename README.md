@@ -328,9 +328,11 @@ Thanks to ...
 
 ____________________
 ## Our Developers
-Dev-Team Vehicle Control Unit & Autonomous Driving
-* [Alex Sperka](https://github.com/AlexSperka) - Initial work
-* Name2 - Initial work
+Dev-Team Vehicle Control Unit & Autonomous Driving in alphabetical order
+* [Alex](https://github.com/AlexSperka) - Initial work
+* [Benedikt](https://github.com/newtop95) - Initial work
+* [Steffi](https://github.com/steffistae) - Initial work
+* [Tizian](https://github.com/tdagner) - Initial work
 
 ____________________
 ## Release History
