@@ -69,7 +69,7 @@ This setup and code implementation has three main purposes:
 Therefore, we decided to use ROS (and soon ROS2) for implementing the given goals as stated above. Right now we are almost ready to fulfill goal Nr. 1 as well as goal Nr. 2. Until goal Nr. 3 there is still quite a way to got. Our progress of the software setup and how it plays together with our hardware can be seen in the image below.
 
 <p align="center">
-  <img src = "https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/blob/master/img/ROS_Architecture_20210311.svg" width=1000>
+  <img src = "https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/blob/main/img/ROS_Architecture_20210311.svg" width=1000>
 </p>
 
 
@@ -164,7 +164,7 @@ ____________________
 ## Getting started
 Our setup includes the Jetson AGX, two D455 cameras, one IMU from Genesys (ADMA Slim) as well as several CAN-Sensors and actors (for example two motors, inverters, wheelspeed sensors, BMS, ...) as can be seen in the image below.
 <p align="center">
-  <img src = "https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/blob/master/img/bfft_autonomous_driving_setup_20210311.png" width=1000>
+  <img src = "https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/blob/main/img/bfft_autonomous_driving_setup_20210311.png" width=1000>
 </p>
 
 ### Intel Camera - Setup
