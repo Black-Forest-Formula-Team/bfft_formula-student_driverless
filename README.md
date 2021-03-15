@@ -94,8 +94,8 @@ Hardware
 ```
 pip3 install bagpy
 ```
-* [Realsense Kernel Patch - scroll down to: Building from Source using Native Backend](https://github.com/IntelRealSense/librealsense/blob/master/doc/installation_jetson.md)
-* [Open_cv for Tegra AGX Xavier - from Source](https://elinux.org/Jetson/Installing_OpenCV)
+* [Realsense Kernel Patch](XXXXX) - scroll down to: Building from Source using Native Backend
+* [Open_cv for Tegra AGX Xavier](https://elinux.org/Jetson/Installing_OpenCV) - scroll down to: Building from Source
 
 ### Install ROS Melodic
 Following the instructions given in the [ROS Docs](https://wiki.ros.org/melodic/Installation/Ubuntu)
