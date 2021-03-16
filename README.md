@@ -69,7 +69,7 @@ This setup and code implementation has three main purposes:
 Therefore, we decided to use ROS (and soon ROS2) for implementing the given goals as stated above. Right now we are almost ready to fulfill goal Nr. 1 as well as goal Nr. 2. Until goal Nr. 3 there is still quite a way to got. Our progress of the software setup and how it plays together with our hardware can be seen in the image below.
 
 <p align="center">
-  <img src = "https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/blob/master/img/ROS_Architecture_20210311.svg" width=1000>
+  <img src = "https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/blob/main/img/ROS_Architecture_20210311.svg" width=1000>
 </p>
 
 
@@ -94,8 +94,8 @@ Hardware
 ```
 pip3 install bagpy
 ```
-* [Realsense Kernel Patch - scroll down to: Building from Source using Native Backend](https://github.com/IntelRealSense/librealsense/blob/master/doc/installation_jetson.md)
-* [Open_cv for Tegra AGX Xavier - from Source](https://elinux.org/Jetson/Installing_OpenCV)
+* [Realsense Kernel Patch](XXXXX) - scroll down to: Building from Source using Native Backend
+* [Open_cv for Tegra AGX Xavier](https://elinux.org/Jetson/Installing_OpenCV) - scroll down to: Building from Source
 
 ### Install ROS Melodic
 Following the instructions given in the [ROS Docs](https://wiki.ros.org/melodic/Installation/Ubuntu)
@@ -135,15 +135,15 @@ cd ~/catkin_ws/src/
 git clone https://github.com/IntelRealSense/realsense-ros.git
 sudo apt-get install ros-melodic-ddynamic-reconfigure
 ```
-* [bfft_CAN_msgs_to_ROS_topic](https://github.com/Black-Forest-Formula-Team/bfft_CAN_msgs_to_ROS_topic): Decode incoming CAN messages and publish them to corresponding topics
+* [bfft_can_bus_msgs_to_ros_topic](https://github.com/Black-Forest-Formula-Team/bfft_can_bus_msgs_to_ros_topic): Decode incoming CAN messages and publish them to corresponding topics
 ```
 cd ~/catkin_ws/src/
-git clone https://github.com/Black-Forest-Formula-Team/bfft_CAN_msgs_to_ROS_topic.git
+git clone https://github.com/Black-Forest-Formula-Team/bfft_can_bus_msgs_to_ros_topic.git
 ```
-* [bfft_rosdata_to_database](https://github.com/Black-Forest-Formula-Team/bfft_rosdata_to_database): Take data recorded in [ROSBAGS](https://wiki.ros.org/rosbag) (internal data format) and export it into CSV files (one per topic). Use CSV files for data visualization purpose
+* [bfft_rosbag_data_conversion](https://github.com/Black-Forest-Formula-Team/bfft_rosbag_data_conversion): Take data recorded in [ROSBAGS](https://wiki.ros.org/rosbag) (internal data format) and export it into CSV files (one per topic). Use CSV files for data visualization purpose
 ```
 cd ~/catkin_ws/src/
-git clone https://github.com/Black-Forest-Formula-Team/bfft_rosdata_to_database.git
+git clone https://github.com/Black-Forest-Formula-Team/bfft_rosbag_data_conversion.git
 ```
 
 For more input please refer to the [Catkin Docs](https://wiki.ros.org/catkin/workspaces)
@@ -164,7 +164,7 @@ ____________________
 ## Getting started
 Our setup includes the Jetson AGX, two D455 cameras, one IMU from Genesys (ADMA Slim) as well as several CAN-Sensors and actors (for example two motors, inverters, wheelspeed sensors, BMS, ...) as can be seen in the image below.
 <p align="center">
-  <img src = "https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/blob/master/img/bfft_autonomous_driving_setup_20210311.png" width=1000>
+  <img src = "https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/blob/main/img/bfft_autonomous_driving_setup_20210311.png" width=1000>
 </p>
 
 ### Intel Camera - Setup
@@ -328,9 +328,11 @@ Thanks to ...
 
 ____________________
 ## Our Developers
-Dev-Team Vehicle Control Unit & Autonomous Driving
-* [Alex Sperka](https://github.com/AlexSperka) - Initial work
-* Name2 - Initial work
+Dev-Team Vehicle Control Unit & Autonomous Driving in alphabetical order
+* [Alex](https://github.com/AlexSperka) - Initial work
+* [Benedikt](https://github.com/newtop95) - Initial work
+* [Steffi](https://github.com/steffistae) - Initial work
+* [Tizian](https://github.com/tdagner) - Initial work
 
 ____________________
 ## Release History
@@ -339,7 +341,7 @@ ____________________
 
 ____________________
 ## Meta
-Distributed under the XYZ license. See ``LICENSE`` for more information.
+Distributed under the MIT license. See ``LICENSE.md`` for more information.
 
 ____________________
 ## Contributing to one of our Repos
