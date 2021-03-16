@@ -341,7 +341,7 @@ ____________________
 
 ____________________
 ## Meta
-Distributed under the XYZ license. See ``LICENSE`` for more information.
+Distributed under the MIT license. See ``LICENSE.md`` for more information.
 
 ____________________
 ## Contributing to one of our Repos
