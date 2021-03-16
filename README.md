@@ -135,15 +135,15 @@ cd ~/catkin_ws/src/
 git clone https://github.com/IntelRealSense/realsense-ros.git
 sudo apt-get install ros-melodic-ddynamic-reconfigure
 ```
-* [bfft_CAN_msgs_to_ROS_topic](https://github.com/Black-Forest-Formula-Team/bfft_CAN_msgs_to_ROS_topic): Decode incoming CAN messages and publish them to corresponding topics
+* [bfft_can_bus_msgs_to_ros_topic](https://github.com/Black-Forest-Formula-Team/bfft_can_bus_msgs_to_ros_topic): Decode incoming CAN messages and publish them to corresponding topics
 ```
 cd ~/catkin_ws/src/
-git clone https://github.com/Black-Forest-Formula-Team/bfft_CAN_msgs_to_ROS_topic.git
+git clone https://github.com/Black-Forest-Formula-Team/bfft_can_bus_msgs_to_ros_topic.git
 ```
-* [bfft_rosdata_to_database](https://github.com/Black-Forest-Formula-Team/bfft_rosdata_to_database): Take data recorded in [ROSBAGS](https://wiki.ros.org/rosbag) (internal data format) and export it into CSV files (one per topic). Use CSV files for data visualization purpose
+* [bfft_rosbag_data_conversion](https://github.com/Black-Forest-Formula-Team/bfft_rosbag_data_conversion): Take data recorded in [ROSBAGS](https://wiki.ros.org/rosbag) (internal data format) and export it into CSV files (one per topic). Use CSV files for data visualization purpose
 ```
 cd ~/catkin_ws/src/
-git clone https://github.com/Black-Forest-Formula-Team/bfft_rosdata_to_database.git
+git clone https://github.com/Black-Forest-Formula-Team/bfft_rosbag_data_conversion.git
 ```
 
 For more input please refer to the [Catkin Docs](https://wiki.ros.org/catkin/workspaces)
