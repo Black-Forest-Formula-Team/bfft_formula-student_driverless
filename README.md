@@ -179,6 +179,9 @@ Start CAN connection, read in messages and transform them into ROS topics, save 
 ```
 sh ~/scripts/startROS.sh
 ```
+As you can see in the gif below, when starting the Bash Script all relevant ROS nodes start and run in the background. This is a convenient way to start the whole system. The advantage of this comes into play when wanting to remote control like start, stop or copy data from the system.
+![ROSBAG to CSV](demo/start-ROS-script.gif)
+
 
 ### Stop autonomous system from Windows laptop
 Kills all ROS processes including ROSBAG recodings
