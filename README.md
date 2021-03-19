@@ -9,7 +9,7 @@
 # Black Forest Formula Team - Formula Student Driverless 2021
 <!-- Template Readme:https://github.com/gitpoint/git-point#readme -->
 
-This repository lays the foundation for the future developments of autonomous features of the Black Forest Formula Team located in Offenburg. You can find an overview to get started in this ReadMe, for more information we suggest to refer to the [Wiki](https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/wiki) you can find in this Repo.
+This repository lays the foundation for the future developments of autonomous features of the Black Forest Formula Team located in Offenburg. You can find an overview to get started in this ReadMe, for more information we suggest to refer to the [Wiki](https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/wiki) you can find in this Repo. This repository as well as our subrepositories are created and maintained by the [Black Forest Formula Team](https://blackforestformula.hs-offenburg.de/) at [University of Applied Sciences Offenburg](https://www.hs-offenburg.de/). 
 ____________________
 
 
@@ -287,46 +287,19 @@ A few of the things you can do with the data visualization plattform:
 
 ________________________________
 ## Code Repository Conventions
-### Python 
-[PEP-8 style](http://wiki.ros.org/PyStyleGuide)
-### ROS Python
-[REP-8 style](https://www.ros.org/reps/rep-0008.html)
-
-## ROS naming conventions
-Thanks to [AMZ](https://github.com/AMZ-Driverless/fsd_skeleton) for the nice overview:
-We use the naming conventions defined at http://wiki.ros.org/ROS/Patterns/Conventions
-### Work packages
-`work_package`, lowercase and `_` as separator, e.g. `lidar`.
-### ROS packages
-`workpackage_somename`, lowercase and `_` as separator, e.g. `lidar_trimmer`, as to make it clear what the package is used for.
-### ROS nodes
-`node_name`, lowercase and `_` as separator. Can be short.
-### ROS topics
-`topic_name`, lowercase and `_` as separator.
-### ROS messages
-`CamelCased.msg` for message filenames. Message types are always CamelCase, whereas message fields are lowercase and `_` as separator, e.g.
-```
-MyMessage.msg:
-Header header
-Float64 my_float
-geometry_msgs/Point my_point
-```
+For our coding conventions please visit the wiki page [ROS & Python Conventions](https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/wiki/00-Coding-Conventions)!
 
 ____________________
 ## Feedback
 
-Feel free to send us feedback! If you wish to contribute, please take a quick look at the [guidelines](./CONTRIBUTING.md)!
+Feel free to send us feedback! 
 
-If there's anything you'd like to chat about, please feel free to text us on one of our social media plattforms [Instagram](https://www.instagram.com/black_forest_formula/) [Facebook](https://www.facebook.com/blackforestformula/) [LinkedIN](https://linkedin.com/company/20527126)!
+If there's anything you'd like to chat about, please feel free to text us on one of our social media plattforms: 
+* [Instagram](https://www.instagram.com/black_forest_formula/) 
+* [Facebook](https://www.facebook.com/blackforestformula/) 
+* [LinkedIN](https://linkedin.com/company/20527126)!
 
-
-____________________
-## Sponsors
-Support this project by becoming a sponsor. Your logo will show up here with a link to your website. [[Become a sponsor](https://blackforestformula.hs-offenburg.de)]
-
-____________________
-## Acknowledgments
-Thanks to ...
+Support this project by becoming a sponsor. Your logo will show up on our website with a link to your website. [[Become a sponsor](https://blackforestformula.hs-offenburg.de)]
 
 ____________________
 ## Our Developers
@@ -347,9 +320,17 @@ Distributed under the MIT license. See ``LICENSE.md`` for more information.
 
 ____________________
 ## Contributing to one of our Repos
-1. Fork it (<https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/fork>)
+1. Fork it (<https://github.com/Black-Forest-Formula-Team/bfft_can_bus_msgs_to_ros_topic/fork>)
 2. Create your feature branch (`git checkout -b feature/fooBar`)
 3. Commit your changes (`git commit -am 'Add some fooBar'`)
 4. Push to the branch (`git push origin feature/fooBar`)
 5. Create a new Pull Request
 
+____________________
+
+
+<p align="left">
+  <a href="https://www.hs-offenburg.de/">
+      <img alt="HSO_Logo" title="HSO_Logo" src="https://static.onthehub.com/production/attachments/15/66edb074-5e09-e211-bd05-f04da23e67f6/7978f7db-e206-4cd7-b7b2-6d9696e98885.png" width="1000">
+  </a>
+</p>
