@@ -213,10 +213,6 @@ A few of the things you can do with the data visualization plattform:
 * View data of last test run
 * ...
 
-<p align="center">
-  <img src = "http://XXXX.png" width=100>
-</p>
-
 ________________________________
 ## Code Repository Conventions
 For our coding conventions please visit the wiki page [ROS & Python Conventions](https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/wiki/00-Coding-Conventions)!
