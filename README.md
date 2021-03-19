@@ -192,7 +192,7 @@ Convert the latest (or a specified) ROSBAG into CSV files (on per topic) to be a
 sh ~/scripts/rosbagToCSV.sh
 ```
 
-![ROSBAG to CSV](demo/start-multi-camera-node.gif)
+![ROSBAG to CSV](demo/convert-ROSBAG-to-CSV-script.gif)
 
 ### Copy CSV files with CAN-Data to Windows Laptop
 Make sure you are running these commands not on the AGX (with Ubuntu) but on a Laptop or PC with Windows. The purpose of this is to be able to copy the recorded and extracted CAN data now available in CSV files (one per topic) onto a Windows system and to display them using a tool of your choice. We are using Tableau for this. Automation of the copying and display process is currently in progress.
