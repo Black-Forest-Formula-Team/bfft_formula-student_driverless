@@ -42,21 +42,11 @@ ____________________
   - [Display Data in Tableau](#display-data-in-tableau)
 - [Features Datavisualization](#features-datavisualization)
 - [Code Repository Conventions](#code-repository-conventions)
-  - [Python](#python)
-  - [ROS Python](#ros-python)
-- [ROS naming conventions](#ros-naming-conventions)
-  - [Work packages:](#work-packages)
-  - [ROS packages:](#ros-packages)
-  - [ROS nodes](#ros-nodes)
-  - [ROS topics](#ros-topics)
-  - [ROS messages](#ros-messages)
 - [Feedback](#feedback)
-- [Sponsors](#sponsors)
-- [Acknowledgments](#acknowledgments)
 - [Our Developers](#our-developers)
 - [Release History](#release-history)
 - [Meta](#meta)
-- [Contributing](#contributing)
+- [Contributing to one of our Repos](#contributing-to-one-of-our-repos)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 ____________________
