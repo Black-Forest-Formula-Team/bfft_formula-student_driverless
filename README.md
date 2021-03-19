@@ -29,8 +29,6 @@ ____________________
 - [Getting started](#getting-started)
   - [Intel Camera - Setup](#intel-camera---setup)
   - [CAN Bus of Jetson AGX Xavier - Setup](#can-bus-of-jetson-agx-xavier---setup)
-    - [Software Setup](#software-setup)
-    - [Hardware Setup](#hardware-setup)
   - [Connecting IMU and sensors via CAN bus](#connecting-imu-and-sensors-via-can-bus)
   - [How to start recording of Data into ROSBAGS](#how-to-start-recording-of-data-into-rosbags)
 - [Usage examples](#usage-examples)
@@ -77,42 +75,22 @@ Hardware
 * [Intel D455 Cameras (x2)](https://www.intelrealsense.com/depth-camera-d455/)
 * [Genesys Adma Slim IMU](https://www.genesys-offenburg.de/en/products/adma-slim-mini-gnssinertial-system/)
 * [Some kind of CAN Transceiver and DB9 connectors]()
-* 
 
 ### Additional and mandatory Libraries and Tools
-* [Bagpy for Python 3](https://pypi.org/project/bagpy/)
-```
-pip3 install bagpy
-```
-* [Realsense Kernel Patch](XXXXX) - scroll down to: Building from Source using Native Backend
-* [Open_cv for Tegra AGX Xavier](https://elinux.org/Jetson/Installing_OpenCV) - scroll down to: Building from Source
+Please visit [this](https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/wiki/01-Installation-Libraries-for-Workspace-(Python-and-ROS)) Wiki Page to install all tools and libraries you will need for this system to run.
 
 ### Install ROS Melodic
-Following the instructions given in the [ROS Docs](https://wiki.ros.org/melodic/Installation/Ubuntu)
-```
-* sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
-* sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
-* sudo apt update
-```
-```
-* sudo apt install ros-melodic-desktop-full
-* echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
-* source ~/.bashrc
-```
-```
-* sudo apt install python-rosdep python-rosinstall python-rosinstall-generator python-wstool build-essential
-* sudo apt install python-rosdep
-* sudo rosdep init
-* rosdep update
-```
+To get the system running we first have to install ROS1 melodic (and in the future probably ROS2). The needed steps are mentioned [here in the Wiki](https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/wiki/01-Installation-ROS-1-Melodic). If you already installed ROS you can skip this step.
 
 ### Setup ROS Catkin-Workspace and Download needed Packages
-Create folder structure for catkin workspace
+Create folder structure for catkin workspace. If you already have one go ahead, you might need to adjust the folder path accordingly. 
 ```
 mkdir -p ~/catkin_ws/src
 ```
 #### Clone packages into src folder inside workspace
 Due to the structure of ROS, functionalities are structured in packages. The following packages need to be installed to be able to use all functionalities of the system. If you only need to visualize data from CAN-bus you can skip everything related to the realsense SDK from Intel referring to the cameras. 
+
+More detail on the setup process can be found in the [Wiki](https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/wiki/02-Setup-Catkin-Workspace)
 
 * [ros_canopen](https://github.com/ros-industrial/ros_canopen): Forward incoming and outgoing CAN Messages to and from ROS topics, interface between logic and CAN-hardware.
 ```
@@ -150,6 +128,9 @@ Source setup file to be able to execute ros commands from every terminal
 echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
 source ~/.bashrc
 ```
+
+More detail in the [Wiki](https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/wiki/03-Build-Process-Catkin-Workspace).
+
 ____________________
 ## Getting started
 Our setup includes the Jetson AGX, two D455 cameras, one IMU from Genesys (ADMA Slim) as well as several CAN-Sensors and actors (for example two motors, inverters, wheelspeed sensors, BMS, ...) as can be seen in the image below.
@@ -162,58 +143,14 @@ Connect Intel D455 or similar Intel camera via USB3.0 (make sure that you use a 
 ```roslaunch realsense2_camera demo_pointcloud.launch```
 A pointcloud displayed in [Gazebo](https://wiki.ros.org/gazebo) should show up.
 
+[Here](https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/wiki/02-Realsense-SDK-on-AGX) you can find a little guide with more input on the camera setup.
+
 ### CAN Bus of Jetson AGX Xavier - Setup
-#### Software Setup
-To be able to receive and send CAN bus data from a sensor to the AGX you need to setup and wire the hardware. Please follow the tutorial under [Enabling CAN on Nvidia Jetson Xavier Developer Kit](https://medium.com/@ramin.nabati/enabling-can-on-nvidia-jetson-xavier-developer-kit-aaaa3c4d99c9) and find more input in this [repo](https://github.com/hmxf/can_xavier). The important lines of the tutorials are mentioned below as step per step setup. Direct citations are marked with "".
+To be able to receive and send CAN bus data from a sensor to the AGX you need to setup and wire the hardware. This is described in our Wiki [here](https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/wiki/02-Setup-CAN-Communication-on-NVIDIA-Jetson-AGX-Xavier).
 
-"To make the above CAN controllers configuration automatically done at system startup, create a file named enable_CAN.sh in the root directory and make it executable:" (last line is modified/added to open vim directly)
-```
-touch /enable_CAN.sh
-sudo chmod 755 /enable_CAN.sh
-sudo vim /enable_CAN.sh
-```
-"To make the above CAN controllers configuration automatically done at system startup, create a file named enable_CAN.sh in the root directory and make it executable:" (changed the rate to 1Mbits, press ```i``` to be able to modify file and "Escape key" and then ```:wq``` to save and exit vim after copying the code below into the file)
-```
-#!/bin/bash
-sudo busybox devmem 0x0c303000 32 0x0000C400
-sudo busybox devmem 0x0c303008 32 0x0000C458
-sudo busybox devmem 0x0c303010 32 0x0000C400
-sudo busybox devmem 0x0c303018 32 0x0000C458
-sudo modprobe can
-sudo modprobe can_raw
-sudo modprobe mttcan
-sudo ip link set can0 type can bitrate 1000000 dbitrate 2000000 berr-reporting on fd on
-sudo ip link set can1 type can bitrate 1000000 dbitrate 2000000 berr-reporting on fd on
-sudo ip link set up can0
-sudo ip link set up can1
-
-exit 0
-```
-"If the file /etc/rc.local already exists on your Jetson Xavier, skip to the next step. If it does not exist, go ahead and create it by running the following commands in terminal:" (added last line to open vim directly)
-```
-printf '%s\n' '#!/bin/bash' 'exit 0' | sudo tee -a /etc/rc.local
-sudo chmod +x /etc/rc.local
-sudo vim /etc/rc.local
-```
-Another vim will open, press ```i``` to be able to modify file. "Add the following line to the/etc/rc.local file before the exit 0 line:" (and press "Escape key" and then ```:wq``` to save and exit vim after copying the code below into the file).
-```
-sh /enable_CAN.sh &
-```
-Now reboot the system and your CAN0 and CAN1 for the Jetson AGX are all set up and ready to be wired! Check if they are available by typing ifconfig, you should see the can0 and can1 listed with usb and eth:
-```
-ifconfig
-```
-#### Hardware Setup
-Follow part 2 of the already mentioned [Tutorial](https://medium.com/@ramin.nabati/enabling-can-on-nvidia-jetson-xavier-developer-kit-aaaa3c4d99c9) to wire the AGX to the CAN Tranceiver. For this project we only use CAN0 and connect the CAN transceiver pins to the AGX pins according to the layout of the tutorial. Make sure to always turn the AGX off and unplug the power source as well as grounding yourself before wiring anything! 
-* Pin 1 - V++
-* Pin 29 - RX
-* Pin 30 - Ground
-* Pin 31 - TX
-
-Be aware that you will need a 120 Ohm resistor on each side when working with CAN bus and longer cable length. For very short cables it might work without one.
 
 ### Connecting IMU and sensors via CAN bus
-By using the DB9 connector of the Genesys IMU it is possible to connect the CAN-transceiver of the AGX with a self soldered DB9 connector. CAN signal is transmitted and received on CAN-High and CAN-Low channels. For more input on CAN please see [CAN Tutorial](https://www.csselectronics.com/screen/page/simple-intro-to-can-bus/language/en).
+Our [Wiki](https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/wiki/02-Setup-ADMA-Slim-IMU-from-Genesys-using-CAN) guide for this section can be found here.
 
 Assuming that the previous steps worked correctly when setting up the AGX as well as building the ROS packages in the catkin workspace using ```catkin_make``` it should now be possible to call the following roslaunch command to begin the listening to CAN0, decoding the CAN messages and writing them to topics.
 ```
@@ -238,6 +175,7 @@ git clone https://github.com/Black-Forest-Formula-Team/bfft_scripts.git
 ```
 
 ### Start autonomous system from Windows laptop
+Start CAN connection, read in messages and transform them into ROS topics, save everything as ROSBAGs 
 ```
 sh ~/scripts/startROS.sh
 ```
@@ -249,6 +187,7 @@ sh ~/scripts/stopROS.sh
 ```
 
 ### Convert ROSBAG to CSV file
+Convert the latest (or a specified) ROSBAG into CSV files (on per topic) to be able to display them in Tableau or other visualization apps
 ```
 sh ~/scripts/rosbagToCSV.sh
 ```
