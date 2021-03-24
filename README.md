@@ -33,9 +33,12 @@ ____________________
   - [How to start recording of Data into ROSBAGS](#how-to-start-recording-of-data-into-rosbags)
 - [Usage examples](#usage-examples)
   - [Convenience scripts for AGX ROS remote control via Ethernet/Wifi](#convenience-scripts-for-agx-ros-remote-control-via-ethernetwifi)
-  - [Start autonomous system from Windows laptop](#start-autonomous-system-from-windows-laptop)
-  - [Stop autonomous system from Windows laptop](#stop-autonomous-system-from-windows-laptop)
-  - [Convert ROSBAG to CSV file](#convert-rosbag-to-csv-file)
+  - [Start autonomous system on Ubuntu (Jetson AGX)](#start-autonomous-system-on-ubuntu-jetson-agx)
+  - [Stop autonomous system on Ubuntu (Jetson AGX)](#stop-autonomous-system-on-ubuntu-jetson-agx)
+  - [Convert ROSBAG to CSV file on Ubuntu (Jetson AGX)](#convert-rosbag-to-csv-file-on-ubuntu-jetson-agx)
+  - [Start autonomous system from Windows Laptop](#start-autonomous-system-from-windows-laptop)
+  - [Stop autonomous system from Windows Laptop](#stop-autonomous-system-from-windows-laptop)
+  - [Convert ROSBAG to CSV file from Windows Laptop](#convert-rosbag-to-csv-file-from-windows-laptop)
   - [Copy CSV files with CAN-Data to Windows Laptop](#copy-csv-files-with-can-data-to-windows-laptop)
   - [Display Data in Tableau](#display-data-in-tableau)
 - [Features Datavisualization](#features-datavisualization)
@@ -174,7 +177,7 @@ cd
 git clone https://github.com/Black-Forest-Formula-Team/bfft_scripts.git
 ```
 
-### Start autonomous system from Windows laptop
+### Start autonomous system on Ubuntu (Jetson AGX)
 Start CAN connection, read in messages and transform them into ROS topics, save everything as ROSBAGs 
 ```
 sh ~/scripts/startROS.sh
@@ -183,19 +186,28 @@ As you can see in the gif below, when starting the Bash Script all relevant ROS 
 ![ROSBAG to CSV](demo/start-ROS-script.gif)
 
 
-### Stop autonomous system from Windows laptop
+### Stop autonomous system on Ubuntu (Jetson AGX)
 Kills all ROS processes including ROSBAG recodings
 ```
 sh ~/scripts/stopROS.sh
 ```
 
-### Convert ROSBAG to CSV file
+### Convert ROSBAG to CSV file on Ubuntu (Jetson AGX)
 Convert the latest (or a specified) ROSBAG into CSV files (on per topic) to be able to display them in Tableau or other visualization apps
 ```
 sh ~/scripts/rosbagToCSV.sh
 ```
 
 ![ROSBAG to CSV](demo/convert-ROSBAG-to-CSV-script.gif)
+
+### Start autonomous system from Windows Laptop
+TBD
+
+### Stop autonomous system from Windows Laptop
+TBD
+
+### Convert ROSBAG to CSV file from Windows Laptop
+TBD
 
 ### Copy CSV files with CAN-Data to Windows Laptop
 Make sure you are running these commands not on the AGX (with Ubuntu) but on a Laptop or PC with Windows. The purpose of this is to be able to copy the recorded and extracted CAN data now available in CSV files (one per topic) onto a Windows system and to display them using a tool of your choice. We are using Tableau for this. Automation of the copying and display process is currently in progress.
