@@ -9,7 +9,7 @@
 # Black Forest Formula Team - Formula Student Driverless 2021
 <!-- Template Readme:https://github.com/gitpoint/git-point#readme -->
 
-This repository lays the foundation for the future developments of autonomous features of the Black Forest Formula Team located in Offenburg. You can find an overview to get started in this ReadMe, for more information we suggest to refer to the [Wiki](https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/wiki) you can find in this Repo.
+This repository lays the foundation for the future developments of autonomous features of the Black Forest Formula Team located in Offenburg. You can find an overview to get started in this ReadMe, for more information we suggest to refer to the [Wiki](https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/wiki) you can find in this Repo. This repository as well as our subrepositories are created and maintained by the [Black Forest Formula Team](https://blackforestformula.hs-offenburg.de/) at [University of Applied Sciences Offenburg](https://www.hs-offenburg.de/). 
 ____________________
 
 
@@ -29,34 +29,25 @@ ____________________
 - [Getting started](#getting-started)
   - [Intel Camera - Setup](#intel-camera---setup)
   - [CAN Bus of Jetson AGX Xavier - Setup](#can-bus-of-jetson-agx-xavier---setup)
-    - [Software Setup](#software-setup)
-    - [Hardware Setup](#hardware-setup)
   - [Connecting IMU and sensors via CAN bus](#connecting-imu-and-sensors-via-can-bus)
   - [How to start recording of Data into ROSBAGS](#how-to-start-recording-of-data-into-rosbags)
 - [Usage examples](#usage-examples)
   - [Convenience scripts for AGX ROS remote control via Ethernet/Wifi](#convenience-scripts-for-agx-ros-remote-control-via-ethernetwifi)
-  - [Start autonomous system from Windows laptop](#start-autonomous-system-from-windows-laptop)
-  - [Stop autonomous system from Windows laptop](#stop-autonomous-system-from-windows-laptop)
-  - [Convert ROSBAG to CSV file](#convert-rosbag-to-csv-file)
+  - [Start autonomous system on Ubuntu (Jetson AGX)](#start-autonomous-system-on-ubuntu-jetson-agx)
+  - [Stop autonomous system on Ubuntu (Jetson AGX)](#stop-autonomous-system-on-ubuntu-jetson-agx)
+  - [Convert ROSBAG to CSV file on Ubuntu (Jetson AGX)](#convert-rosbag-to-csv-file-on-ubuntu-jetson-agx)
+  - [Start autonomous system from Windows Laptop](#start-autonomous-system-from-windows-laptop)
+  - [Stop autonomous system from Windows Laptop](#stop-autonomous-system-from-windows-laptop)
+  - [Convert ROSBAG to CSV file from Windows Laptop](#convert-rosbag-to-csv-file-from-windows-laptop)
   - [Copy CSV files with CAN-Data to Windows Laptop](#copy-csv-files-with-can-data-to-windows-laptop)
   - [Display Data in Tableau](#display-data-in-tableau)
 - [Features Datavisualization](#features-datavisualization)
 - [Code Repository Conventions](#code-repository-conventions)
-  - [Python](#python)
-  - [ROS Python](#ros-python)
-- [ROS naming conventions](#ros-naming-conventions)
-  - [Work packages:](#work-packages)
-  - [ROS packages:](#ros-packages)
-  - [ROS nodes](#ros-nodes)
-  - [ROS topics](#ros-topics)
-  - [ROS messages](#ros-messages)
 - [Feedback](#feedback)
-- [Sponsors](#sponsors)
-- [Acknowledgments](#acknowledgments)
 - [Our Developers](#our-developers)
 - [Release History](#release-history)
 - [Meta](#meta)
-- [Contributing](#contributing)
+- [Contributing to one of our Repos](#contributing-to-one-of-our-repos)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 ____________________
@@ -87,42 +78,22 @@ Hardware
 * [Intel D455 Cameras (x2)](https://www.intelrealsense.com/depth-camera-d455/)
 * [Genesys Adma Slim IMU](https://www.genesys-offenburg.de/en/products/adma-slim-mini-gnssinertial-system/)
 * [Some kind of CAN Transceiver and DB9 connectors]()
-* 
 
 ### Additional and mandatory Libraries and Tools
-* [Bagpy for Python 3](https://pypi.org/project/bagpy/)
-```
-pip3 install bagpy
-```
-* [Realsense Kernel Patch](XXXXX) - scroll down to: Building from Source using Native Backend
-* [Open_cv for Tegra AGX Xavier](https://elinux.org/Jetson/Installing_OpenCV) - scroll down to: Building from Source
+Please visit [this](https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/wiki/01-Installation-Libraries-for-Workspace-(Python-and-ROS)) Wiki Page to install all tools and libraries you will need for this system to run.
 
 ### Install ROS Melodic
-Following the instructions given in the [ROS Docs](https://wiki.ros.org/melodic/Installation/Ubuntu)
-```
-* sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
-* sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
-* sudo apt update
-```
-```
-* sudo apt install ros-melodic-desktop-full
-* echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
-* source ~/.bashrc
-```
-```
-* sudo apt install python-rosdep python-rosinstall python-rosinstall-generator python-wstool build-essential
-* sudo apt install python-rosdep
-* sudo rosdep init
-* rosdep update
-```
+To get the system running we first have to install ROS1 melodic (and in the future probably ROS2). The needed steps are mentioned [here in the Wiki](https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/wiki/01-Installation-ROS-1-Melodic). If you already installed ROS you can skip this step.
 
 ### Setup ROS Catkin-Workspace and Download needed Packages
-Create folder structure for catkin workspace
+Create folder structure for catkin workspace. If you already have one go ahead, you might need to adjust the folder path accordingly. 
 ```
 mkdir -p ~/catkin_ws/src
 ```
 #### Clone packages into src folder inside workspace
 Due to the structure of ROS, functionalities are structured in packages. The following packages need to be installed to be able to use all functionalities of the system. If you only need to visualize data from CAN-bus you can skip everything related to the realsense SDK from Intel referring to the cameras. 
+
+More detail on the setup process can be found in the [Wiki](https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/wiki/02-Setup-Catkin-Workspace)
 
 * [ros_canopen](https://github.com/ros-industrial/ros_canopen): Forward incoming and outgoing CAN Messages to and from ROS topics, interface between logic and CAN-hardware.
 ```
@@ -160,6 +131,9 @@ Source setup file to be able to execute ros commands from every terminal
 echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
 source ~/.bashrc
 ```
+
+More detail in the [Wiki](https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/wiki/03-Build-Process-Catkin-Workspace).
+
 ____________________
 ## Getting started
 Our setup includes the Jetson AGX, two D455 cameras, one IMU from Genesys (ADMA Slim) as well as several CAN-Sensors and actors (for example two motors, inverters, wheelspeed sensors, BMS, ...) as can be seen in the image below.
@@ -172,58 +146,14 @@ Connect Intel D455 or similar Intel camera via USB3.0 (make sure that you use a 
 ```roslaunch realsense2_camera demo_pointcloud.launch```
 A pointcloud displayed in [Gazebo](https://wiki.ros.org/gazebo) should show up.
 
+[Here](https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/wiki/02-Realsense-SDK-on-AGX) you can find a little guide with more input on the camera setup.
+
 ### CAN Bus of Jetson AGX Xavier - Setup
-#### Software Setup
-To be able to receive and send CAN bus data from a sensor to the AGX you need to setup and wire the hardware. Please follow the tutorial under [Enabling CAN on Nvidia Jetson Xavier Developer Kit](https://medium.com/@ramin.nabati/enabling-can-on-nvidia-jetson-xavier-developer-kit-aaaa3c4d99c9) and find more input in this [repo](https://github.com/hmxf/can_xavier). The important lines of the tutorials are mentioned below as step per step setup. Direct citations are marked with "".
+To be able to receive and send CAN bus data from a sensor to the AGX you need to setup and wire the hardware. This is described in our Wiki [here](https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/wiki/02-Setup-CAN-Communication-on-NVIDIA-Jetson-AGX-Xavier).
 
-"To make the above CAN controllers configuration automatically done at system startup, create a file named enable_CAN.sh in the root directory and make it executable:" (last line is modified/added to open vim directly)
-```
-touch /enable_CAN.sh
-sudo chmod 755 /enable_CAN.sh
-sudo vim /enable_CAN.sh
-```
-"To make the above CAN controllers configuration automatically done at system startup, create a file named enable_CAN.sh in the root directory and make it executable:" (changed the rate to 1Mbits, press ```i``` to be able to modify file and "Escape key" and then ```:wq``` to save and exit vim after copying the code below into the file)
-```
-#!/bin/bash
-sudo busybox devmem 0x0c303000 32 0x0000C400
-sudo busybox devmem 0x0c303008 32 0x0000C458
-sudo busybox devmem 0x0c303010 32 0x0000C400
-sudo busybox devmem 0x0c303018 32 0x0000C458
-sudo modprobe can
-sudo modprobe can_raw
-sudo modprobe mttcan
-sudo ip link set can0 type can bitrate 1000000 dbitrate 2000000 berr-reporting on fd on
-sudo ip link set can1 type can bitrate 1000000 dbitrate 2000000 berr-reporting on fd on
-sudo ip link set up can0
-sudo ip link set up can1
-
-exit 0
-```
-"If the file /etc/rc.local already exists on your Jetson Xavier, skip to the next step. If it does not exist, go ahead and create it by running the following commands in terminal:" (added last line to open vim directly)
-```
-printf '%s\n' '#!/bin/bash' 'exit 0' | sudo tee -a /etc/rc.local
-sudo chmod +x /etc/rc.local
-sudo vim /etc/rc.local
-```
-Another vim will open, press ```i``` to be able to modify file. "Add the following line to the/etc/rc.local file before the exit 0 line:" (and press "Escape key" and then ```:wq``` to save and exit vim after copying the code below into the file).
-```
-sh /enable_CAN.sh &
-```
-Now reboot the system and your CAN0 and CAN1 for the Jetson AGX are all set up and ready to be wired! Check if they are available by typing ifconfig, you should see the can0 and can1 listed with usb and eth:
-```
-ifconfig
-```
-#### Hardware Setup
-Follow part 2 of the already mentioned [Tutorial](https://medium.com/@ramin.nabati/enabling-can-on-nvidia-jetson-xavier-developer-kit-aaaa3c4d99c9) to wire the AGX to the CAN Tranceiver. For this project we only use CAN0 and connect the CAN transceiver pins to the AGX pins according to the layout of the tutorial. Make sure to always turn the AGX off and unplug the power source as well as grounding yourself before wiring anything! 
-* Pin 1 - V++
-* Pin 29 - RX
-* Pin 30 - Ground
-* Pin 31 - TX
-
-Be aware that you will need a 120 Ohm resistor on each side when working with CAN bus and longer cable length. For very short cables it might work without one.
 
 ### Connecting IMU and sensors via CAN bus
-By using the DB9 connector of the Genesys IMU it is possible to connect the CAN-transceiver of the AGX with a self soldered DB9 connector. CAN signal is transmitted and received on CAN-High and CAN-Low channels. For more input on CAN please see [CAN Tutorial](https://www.csselectronics.com/screen/page/simple-intro-to-can-bus/language/en).
+Our [Wiki](https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/wiki/02-Setup-ADMA-Slim-IMU-from-Genesys-using-CAN) guide for this section can be found here.
 
 Assuming that the previous steps worked correctly when setting up the AGX as well as building the ROS packages in the catkin workspace using ```catkin_make``` it should now be possible to call the following roslaunch command to begin the listening to CAN0, decoding the CAN messages and writing them to topics.
 ```
@@ -247,23 +177,37 @@ cd
 git clone https://github.com/Black-Forest-Formula-Team/bfft_scripts.git
 ```
 
-### Start autonomous system from Windows laptop
+### Start autonomous system on Ubuntu (Jetson AGX)
+Start CAN connection, read in messages and transform them into ROS topics, save everything as ROSBAGs 
 ```
 sh ~/scripts/startROS.sh
 ```
+As you can see in the gif below, when starting the Bash Script all relevant ROS nodes start and run in the background. This is a convenient way to start the whole system. The advantage of this comes into play when wanting to remote control like start, stop or copy data from the system.
+![ROSBAG to CSV](demo/start-ROS-script.gif)
 
-### Stop autonomous system from Windows laptop
+
+### Stop autonomous system on Ubuntu (Jetson AGX)
 Kills all ROS processes including ROSBAG recodings
 ```
 sh ~/scripts/stopROS.sh
 ```
 
-### Convert ROSBAG to CSV file
+### Convert ROSBAG to CSV file on Ubuntu (Jetson AGX)
+Convert the latest (or a specified) ROSBAG into CSV files (on per topic) to be able to display them in Tableau or other visualization apps
 ```
 sh ~/scripts/rosbagToCSV.sh
 ```
 
-![ROSBAG to CSV](demo/start-multi-camera-node.gif)
+![ROSBAG to CSV](demo/convert-ROSBAG-to-CSV-script.gif)
+
+### Start autonomous system from Windows Laptop
+TBD
+
+### Stop autonomous system from Windows Laptop
+TBD
+
+### Convert ROSBAG to CSV file from Windows Laptop
+TBD
 
 ### Copy CSV files with CAN-Data to Windows Laptop
 Make sure you are running these commands not on the AGX (with Ubuntu) but on a Laptop or PC with Windows. The purpose of this is to be able to copy the recorded and extracted CAN data now available in CSV files (one per topic) onto a Windows system and to display them using a tool of your choice. We are using Tableau for this. Automation of the copying and display process is currently in progress.
@@ -281,52 +225,21 @@ A few of the things you can do with the data visualization plattform:
 * View data of last test run
 * ...
 
-<p align="center">
-  <img src = "http://XXXX.png" width=100>
-</p>
-
 ________________________________
 ## Code Repository Conventions
-### Python 
-[PEP-8 style](http://wiki.ros.org/PyStyleGuide)
-### ROS Python
-[REP-8 style](https://www.ros.org/reps/rep-0008.html)
-
-## ROS naming conventions
-Thanks to [AMZ](https://github.com/AMZ-Driverless/fsd_skeleton) for the nice overview:
-We use the naming conventions defined at http://wiki.ros.org/ROS/Patterns/Conventions
-### Work packages
-`work_package`, lowercase and `_` as separator, e.g. `lidar`.
-### ROS packages
-`workpackage_somename`, lowercase and `_` as separator, e.g. `lidar_trimmer`, as to make it clear what the package is used for.
-### ROS nodes
-`node_name`, lowercase and `_` as separator. Can be short.
-### ROS topics
-`topic_name`, lowercase and `_` as separator.
-### ROS messages
-`CamelCased.msg` for message filenames. Message types are always CamelCase, whereas message fields are lowercase and `_` as separator, e.g.
-```
-MyMessage.msg:
-Header header
-Float64 my_float
-geometry_msgs/Point my_point
-```
+For our coding conventions please visit the wiki page [ROS & Python Conventions](https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/wiki/00-Coding-Conventions)!
 
 ____________________
 ## Feedback
 
-Feel free to send us feedback! If you wish to contribute, please take a quick look at the [guidelines](./CONTRIBUTING.md)!
+Feel free to send us feedback! 
 
-If there's anything you'd like to chat about, please feel free to text us on one of our social media plattforms [Instagram](https://www.instagram.com/black_forest_formula/) [Facebook](https://www.facebook.com/blackforestformula/) [LinkedIN](https://linkedin.com/company/20527126)!
+If there's anything you'd like to chat about, please feel free to text us on one of our social media plattforms: 
+* [Instagram](https://www.instagram.com/black_forest_formula/) 
+* [Facebook](https://www.facebook.com/blackforestformula/) 
+* [LinkedIN](https://linkedin.com/company/20527126)!
 
-
-____________________
-## Sponsors
-Support this project by becoming a sponsor. Your logo will show up here with a link to your website. [[Become a sponsor](https://blackforestformula.hs-offenburg.de)]
-
-____________________
-## Acknowledgments
-Thanks to ...
+Support this project by becoming a sponsor. Your logo will show up on our website with a link to your website. [[Become a sponsor](https://blackforestformula.hs-offenburg.de)]
 
 ____________________
 ## Our Developers
@@ -347,9 +260,17 @@ Distributed under the MIT license. See ``LICENSE.md`` for more information.
 
 ____________________
 ## Contributing to one of our Repos
-1. Fork it (<https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/fork>)
+1. Fork it (<https://github.com/Black-Forest-Formula-Team/bfft_can_bus_msgs_to_ros_topic/fork>)
 2. Create your feature branch (`git checkout -b feature/fooBar`)
 3. Commit your changes (`git commit -am 'Add some fooBar'`)
 4. Push to the branch (`git push origin feature/fooBar`)
 5. Create a new Pull Request
 
+____________________
+
+
+<p align="left">
+  <a href="https://www.hs-offenburg.de/">
+      <img alt="HSO_Logo" title="HSO_Logo" src="https://static.onthehub.com/production/attachments/15/66edb074-5e09-e211-bd05-f04da23e67f6/7978f7db-e206-4cd7-b7b2-6d9696e98885.png" width="1000">
+  </a>
+</p>
