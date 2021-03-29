@@ -38,7 +38,6 @@ ____________________
   - [Convert ROSBAG to CSV file on Ubuntu (Jetson AGX)](#convert-rosbag-to-csv-file-on-ubuntu-jetson-agx)
   - [Start autonomous system from Windows Laptop](#start-autonomous-system-from-windows-laptop)
   - [Stop autonomous system from Windows Laptop](#stop-autonomous-system-from-windows-laptop)
-  - [Convert ROSBAG to CSV file from Windows Laptop](#convert-rosbag-to-csv-file-from-windows-laptop)
   - [Copy CSV files with CAN-Data to Windows Laptop](#copy-csv-files-with-can-data-to-windows-laptop)
   - [Display Data in Tableau](#display-data-in-tableau)
 - [Features Datavisualization](#features-datavisualization)
@@ -187,13 +186,13 @@ As you can see in the gif below, when starting the Bash Script all relevant ROS 
 
 
 ### Stop autonomous system on Ubuntu (Jetson AGX)
-Kills all ROS processes including ROSBAG recodings
+Kills all ROS processes including ROSBAG recodings and convert the latest (or a specified) ROSBAG into CSV files (on per topic) to be able to display them in Tableau or other visualization apps.
 ```
 sh ~/scripts/stopROS.sh
 ```
 
 ### Convert ROSBAG to CSV file on Ubuntu (Jetson AGX)
-Convert the latest (or a specified) ROSBAG into CSV files (on per topic) to be able to display them in Tableau or other visualization apps
+For simplicity this script is called directly from inside the stopROS.sh bash script. As already stated before it convert the latest (or a specified) ROSBAG into CSV files.
 ```
 sh ~/scripts/rosbagToCSV.sh
 ```
@@ -201,30 +200,45 @@ sh ~/scripts/rosbagToCSV.sh
 ![ROSBAG to CSV](demo/convert-ROSBAG-to-CSV-script.gif)
 
 ### Start autonomous system from Windows Laptop
-TBD
+To ensure ease of use, all scripts are to be executed via a simple double-click on a Windows computer prepared for this purpose [Wiki](https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/wiki/00.12-Client-side-preperations). The only requirement is a direct WIFI connection to the AGX [Wiki](https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/wiki/00.12-Server-side-preperations-(AGX))
+
+To start the system from windows, double click the "startROS" programm.
+
+
+<p align="center">
+  <img src = "https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/blob/main/demo/startROS.gif" width=1000>
+</p>
+
 
 ### Stop autonomous system from Windows Laptop
-TBD
+To stop the system from windows, just double click the "stopROS" programm.
 
-### Convert ROSBAG to CSV file from Windows Laptop
-TBD
+<p align="center">
+  <img src = "https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/blob/main/demo/stopROS.gif" width=1000>
+</p>
 
 ### Copy CSV files with CAN-Data to Windows Laptop
-Make sure you are running these commands not on the AGX (with Ubuntu) but on a Laptop or PC with Windows. The purpose of this is to be able to copy the recorded and extracted CAN data now available in CSV files (one per topic) onto a Windows system and to display them using a tool of your choice. We are using Tableau for this. Automation of the copying and display process is currently in progress.
+To copy the CSV files to the windows machine, just double click the "getData" porgramm.
 
-TBD
+<p align="center">
+  <img src = "https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/blob/main/demo/getData.gif" width=1000>
+</p>
+
 
 ### Display Data in Tableau
-TBD
+To be able to display the data in Tableau, a Tableau desktop license is required as well as the installation of Tableau desktop in version 2020.4 or newer. If these requirements are met, the data_visualisation.twb file can be opened. Now you only have to update the data once under the tab "data source" to display the last run.
 
 ____________________
 ## Features Datavisualization
 
-A few of the things you can do with the data visualization plattform:
+Due to the current state of development of the vehicle as a whole, only values that were already available at the time of creation are visualized in this data_visualization.twb file. For this reason in particular, we decided to use Tableau, as our data acquisition process and Tableau make it extremely easy to integrate and quickly visualize data from new sensors.  
 
-* View data of last test run
-* ...
+The following visualizations are available in the current version: 
+* Position data (displayed as geodata in a map).
+* rate angular velocity
+* acceleration
 
+Using the unknown CAN-ids, we can easily and quickly display new sensors that have not been included so far. 
 ________________________________
 ## Code Repository Conventions
 For our coding conventions please visit the wiki page [ROS & Python Conventions](https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/wiki/00-Coding-Conventions)!
