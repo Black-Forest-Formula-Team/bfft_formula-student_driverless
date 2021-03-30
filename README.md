@@ -170,7 +170,9 @@ It is possible to get a list of all available topics by typing ```rostopic list`
 ```rosbag record -a```
 
 For more detail have a look at the [Wiki Page](https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/wiki/04-Data-Recording-using-ROSBAGs).
-                                                                ____________________
+                                                                
+____________________
+
 ## Usage examples
 ### Convenience scripts for AGX ROS remote control via Ethernet/Wifi
 * [Scripts to enable remote control of AGX](https://github.com/Black-Forest-Formula-Team/bfft_scripts): Useful if not monitor is available to connect AGX to, for example when racecar is standing on the race track. Remote control needed to start & stop autonomous system or to copy the recorded data from AGX to Windows PC.
