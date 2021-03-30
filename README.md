@@ -200,7 +200,7 @@ sh ~/scripts/rosbagToCSV.sh
 ![ROSBAG to CSV](demo/convert-ROSBAG-to-CSV-script.gif)
 
 ### Start autonomous system from Windows Laptop
-To ensure ease of use, all scripts are to be executed via a simple double-click on a Windows computer prepared for this purpose [Wiki](https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/wiki/00.12-Client-side-preperations). The only requirement is a direct WIFI connection to the AGX [Wiki](https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/wiki/00.12-Server-side-preperations-(AGX))
+To ensure ease of use, all scripts are to be executed via a simple double-click on a Windows computer prepared for this purpose ([Wiki](https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/wiki/00.12-Client-side-preperations)). The only requirement is a direct WIFI connection to the AGX ([Link](https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/wiki/00.12-Server-side-preperations-(AGX))
 
 To start the system from windows, double click the "startROS" programm.
 
