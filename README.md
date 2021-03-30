@@ -82,7 +82,7 @@ Hardware
 Please visit [this](https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/wiki/01-Installation-Libraries-for-Workspace-(Python-and-ROS)) Wiki Page to install all tools and libraries you will need for this system to run.
 
 ### Install ROS Melodic
-To get the system running we first have to install ROS1 melodic (and in the future probably ROS2). The needed steps are mentioned [here in the Wiki](https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/wiki/01-Installation-ROS-1-Melodic). If you already installed ROS you can skip this step.
+To get the system running we first have to install ROS1 melodic (and in the future probably ROS2). The needed steps are mentioned [here in the Wiki](https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/wiki/01.4-Installation-ROS-1-Melodic). If you already installed ROS you can skip this step.
 
 ### Setup ROS Catkin-Workspace and Download needed Packages
 Create folder structure for catkin workspace. If you already have one go ahead, you might need to adjust the folder path accordingly. 
@@ -92,7 +92,7 @@ mkdir -p ~/catkin_ws/src
 #### Clone packages into src folder inside workspace
 Due to the structure of ROS, functionalities are structured in packages. The following packages need to be installed to be able to use all functionalities of the system. If you only need to visualize data from CAN-bus you can skip everything related to the realsense SDK from Intel referring to the cameras. 
 
-More detail on the setup process can be found in the [Wiki](https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/wiki/02-Setup-Catkin-Workspace)
+More detail on the setup process can be found in the [Wiki](https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/wiki/02.0-Setup-Catkin-Workspace)
 
 * [ros_canopen](https://github.com/ros-industrial/ros_canopen): Forward incoming and outgoing CAN Messages to and from ROS topics, interface between logic and CAN-hardware.
 ```
@@ -131,7 +131,7 @@ echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
 source ~/.bashrc
 ```
 
-More detail in the [Wiki](https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/wiki/03-Build-Process-Catkin-Workspace).
+More detail in the [Wiki](https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/wiki/03.0-Build-Process-Catkin-Workspace).
 
 ____________________
 ## Getting started
@@ -148,11 +148,11 @@ A pointcloud displayed in [Gazebo](https://wiki.ros.org/gazebo) should show up.
 [Here](https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/wiki/02-Realsense-SDK-on-AGX) you can find a little guide with more input on the camera setup.
 
 ### CAN Bus of Jetson AGX Xavier - Setup
-To be able to receive and send CAN bus data from a sensor to the AGX you need to setup and wire the hardware. This is described in our Wiki [here](https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/wiki/02-Setup-CAN-Communication-on-NVIDIA-Jetson-AGX-Xavier).
+To be able to receive and send CAN bus data from a sensor to the AGX you need to setup and wire the hardware. This is described in our Wiki [here](https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/wiki/02.1-Setup-CAN-Communication-on-NVIDIA-Jetson-AGX-Xavier).
 
 
 ### Connecting IMU and sensors via CAN bus
-Our [Wiki](https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/wiki/02-Setup-ADMA-Slim-IMU-from-Genesys-using-CAN) guide for this section can be found here.
+Our [Wiki](https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/wiki/02.2-Setup-ADMA-Slim-IMU-from-Genesys-using-CAN) guide for this section can be found here.
 
 Assuming that the previous steps worked correctly when setting up the AGX as well as building the ROS packages in the catkin workspace using ```catkin_make``` it should now be possible to call the following roslaunch command to begin the listening to CAN0, decoding the CAN messages and writing them to topics.
 ```
@@ -169,7 +169,7 @@ It is possible to get a list of all available topics by typing ```rostopic list`
 
 ```rosbag record -a```
 
-For more detail have a look at the [Wiki Page](https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/wiki/04-Data-Recording-using-ROSBAGs).
+For more detail have a look at the [Wiki Page](https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/wiki/04.1-Data-Recording-using-ROSBAGs).
                                                                 
 ____________________
 
@@ -205,7 +205,7 @@ sh ~/scripts/rosbagToCSV.sh
 ![ROSBAG to CSV](demo/convert-ROSBAG-to-CSV-script.gif)
 
 ### Start autonomous system from Windows Laptop
-To ensure ease of use, all scripts are to be executed via a simple double-click on a Windows computer prepared for this purpose ([Wiki](https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/wiki/00.12-Client-side-preperations)). The only requirement is a direct WIFI connection to the AGX ([Link](https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/wiki/00.12-Server-side-preperations-(AGX))
+To ensure ease of use, all scripts can be executed via a simple double-click on a for this purpose prepared Windows computer ([Wiki](https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/wiki/06.2-Client-side-preperations)). The only requirement is a direct WIFI connection to the AGX ([Link](https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/wiki/06.1-Server-side-preperations-(AGX))
 
 To start the system from windows, double click the "startROS" programm.
 
@@ -246,7 +246,7 @@ The following visualizations are available in the current version:
 Using the unknown CAN-ids, we can easily and quickly display new sensors that have not been included so far. 
 ________________________________
 ## Code Repository Conventions
-For our coding conventions please visit the wiki page [ROS & Python Conventions](https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/wiki/00-Coding-Conventions)!
+For our coding conventions please visit the wiki page [ROS & Python Conventions](https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/wiki/00.4-Coding-Conventions)!
 
 ____________________
 ## Feedback
