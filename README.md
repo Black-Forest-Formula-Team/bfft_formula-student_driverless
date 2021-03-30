@@ -166,7 +166,10 @@ rostopic echo /imu/gps_data
 It is possible to get a list of all available topics by typing ```rostopic list```.
 
 ### How to start recording of Data into ROSBAGS
-TBD
+
+```rosbag record -a```
+
+For more detail have a look at the [Wiki Page](https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/wiki/04-Data-Recording-using-ROSBAGs).
                                                                 ____________________
 ## Usage examples
 ### Convenience scripts for AGX ROS remote control via Ethernet/Wifi
