@@ -243,7 +243,9 @@ The following visualizations are available in the current version:
 * rate angular velocity
 * acceleration
 
-Using the unknown CAN-ids, we can easily and quickly display new sensors that have not been included so far. 
+Using the unknown CAN-ids, we can easily and quickly display new sensors that have not been included so far. Below you can see our current dashboard.
+![tableau_BFFT_Dashboard](https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/blob/main/img/tableau_BFFT_Dashboard.png)
+
 ________________________________
 ## Code Repository Conventions
 For our coding conventions please visit the wiki page [ROS & Python Conventions](https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/wiki/00.4-Coding-Conventions)!
