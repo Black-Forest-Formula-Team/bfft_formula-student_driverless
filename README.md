@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://blackforestformula.hs-offenburg.de/">
-    <img alt="BFFT_Logo" title="BFFT" src="https://scontent-frt3-1.xx.fbcdn.net/v/t1.0-9/69419451_117866062911797_4569414645357477888_o.jpg?_nc_cat=107&ccb=1-3&_nc_sid=973b4a&_nc_ohc=b5rqMomf8_AAX8x_CMD&_nc_ht=scontent-frt3-1.xx&oh=7ab30784f93fdf5ad846196156f856e6&oe=606D20C4" width="1000">
+    <img alt="BFFT_Logo" title="BFFT" src="https://github.com/Black-Forest-Formula-Team/bfft_formula-student_driverless/blob/main/img/bfft_logo_dark.svg" width="1000">
   </a>
 </p>
 
